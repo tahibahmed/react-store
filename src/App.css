@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.navbar {
+    background: #52c234;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #061700, #52c234);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #061700, #52c234);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.h-700 {
+    height: 700px;
+}
+.hell{
+    font-size: 40px !important;
+}
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
+    color: white;
+    font-size: 3.5rem;
+}
+.navbar {
+    padding-bottom: 20px;
+}
+
+.navbar a {
+    font-size: 26px;
+    color: #fff !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+.slick-dots li button:before {
+    font-size: 17px !important;
+    color: #0d3003 !important;
+    margin-bottom: 10px;
+}
+
+.cards {
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.navbar .navbarDropdown {
+    text-decoration: none;
+}
+
+.one {
+    border: 1px solid rgb(87, 87, 87);
+    margin-left: 30%;
+    margin-top: 10%;
+    padding: 30px;
+    width: 500px !important;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px;
+}
+
+.navbar img {
+    width: 100px;
+    height: 80px;
+}
+
+.image img {
+    width: 200px;
+    height: 200px;
+    margin-left: 35px;
+    margin-top: 10px;
+}
+
+.image img:hover {
+    scale: 1.1;
+}
+
+.slick-slide img {
+    width: 85%;
+    height: 80vh;
+
+}
+
+.slick-track {
+    height: 80vh !important;
+    width: fit-content;
+
+}
+
+.slick-slider {
+    padding-top: 20px;
+    left: 07%;
+}
+
+.navbar a:hover {
+    color: yellow !important;
+    border-bottom: 2px solid yellow !important;
+
+}
+
+.MuiBox-root.css-s0w8ce {
+    padding: 0;
+}
+
+.mediacardimg {
+    width: 200px;
+    object-fit: contain;
+}
+
+img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img.mediacardimg.css-1rorjgf-MuiCardMedia-root {
+    width: 262px;
+    object-fit: contain
+}
+
+.MuiBox-root.css-184i2el {
+    border: 2px solid #0d3003;
+    border-radius: 25px;
+}
+
+.hov:hover {
+    background-color: green !important;
+    color: white !important;
+}
+
+.icons {
+    font-size: 50px;
+    color: #fff;
+    margin-right: 30px;
+}
+
+.dropdown .btn {
+    line-height: 1.8 !important;
+    color: #fff;
+    font-size: 26px !important;
+    border: none !important;
+}
+.css-1oqv2c0-MuiPaper-root-MuiCard-root{
+    border-radius: 25px !important;
+}
+
+.dropdown a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.dropdown-menu {
+    padding: 10px;
+    left: 05% !important;
+    top: 60px !important;
+    width: 250px;
+
+}
