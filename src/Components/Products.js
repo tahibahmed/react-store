@@ -2,6 +2,7 @@ import React from "react";
 import MediaCard from "./Card";
 import { useEffect, useState } from "react";
 import "../App.css";
+import { InfinitySpin } from "react-loader-spinner";
 
 import BasicModal from "./Modal";
 
@@ -10,23 +11,19 @@ const Products = () => {
   const [open, setOpen] = useState(false);
   const [details, setDetails] = useState({});
   const [categories, setcategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    
-        setLoading(true)
-        fetch("https://fakestoreapi.com/products")
-        .then((res) => res.json())
-        .then((data) => {
-          setdata(data);
-          setLoading(false)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-   
-   
+    setLoading(true);
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setdata(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/categories")
@@ -39,30 +36,32 @@ const Products = () => {
       });
   }, []);
 
-  const filterd =(category)=>{
-    setSelectedCategory(category)
+  const filterd = (category) => {
+    setSelectedCategory(category);
     fetch(`https://fakestoreapi.com/products/category/${category}`)
-        .then((res) => res.json())  
-        .then(res => {
-            setdata(res);
-          })
-          .catch(error => {
-            console.error(`Error fetching products for category ${selectedCategory}:`, error);
-          });
-  }
+      .then((res) => res.json())
+      .then((res) => {
+        setdata(res);
+      })
+      .catch((error) => {
+        console.error(
+          `Error fetching products for category ${selectedCategory}:`,
+          error
+        );
+      });
+  };
 
-  const alldata = ()=>{
+  const alldata = () => {
     fetch("https://fakestoreapi.com/products")
-    .then((res) => res.json())
-    .then((data) => {
-      setdata(data);
-      // setLoading(false)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
-
+      .then((res) => res.json())
+      .then((data) => {
+        setdata(data);
+        // setLoading(false)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const viewDetails = (id) => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -77,15 +76,17 @@ const Products = () => {
   };
   return (
     <div>
-      <div className="p-4 ">
+      <div className="p-4 center-border">
         {categories.map((ab) => (
-          <button onClick={()=> filterd(ab)}   className="m-3 rounded">{ab}</button>
+          <button onClick={() => filterd(ab)} className="m-3 rounded hello">
+            {ab}
+          </button>
         ))}
-        {
-          selectedCategory && (
-            <button onClick={()=> alldata()}>All </button>
-  )
-        }
+        {selectedCategory && (
+          <button className=" hello  rounded" onClick={() => alldata()}>
+            All{" "}
+          </button>
+        )}
       </div>
       <div>
         <BasicModal
@@ -96,9 +97,9 @@ const Products = () => {
       </div>
       <div className="cards">
         {loading && (
-          <div>
+          <div className="load">
             {" "}
-            <h1> LOading .....</h1>
+            <InfinitySpin width="200" color="#4fa94d" />
           </div>
         )}
         {data.map((v, i) => {

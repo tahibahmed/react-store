@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css";
 import lgooo from "../assets/lgoo .png";
-import IconButton from '@mui/material/IconButton';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import TemporaryDrawer from './Drawer'
+import IconButton from "@mui/material/IconButton";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import TemporaryDrawer from "./Drawer";
+import Badge from "@mui/material/Badge";
+import { Box } from "@mui/material";
+import CartContext from "../Context/Context";
 
 const Navbar = (props) => {
+  const [opendraw, setOpendraw] = useState(false);
 
-  const [open ,setOpen]=useState(false)
+  const { cart, setcart } = useContext(CartContext);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -56,12 +61,29 @@ const Navbar = (props) => {
                   Signup
                 </NavLink>
               </li>
-              <IconButton onClick={()=> setOpen(true)}  className="hell" aria-label="add to shopping cart">
-                <AddShoppingCartIcon  />
-                <TemporaryDrawer  open={open} setOpen={setOpen}/>
+              <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                >
+                  <Badge badgeContent={cart.length} color="error">
+                    <AddShoppingCartIcon onClick={() => setOpendraw(true)} />
+                  </Badge>
+                  <TemporaryDrawer
+                    CardData={cart}
+                    opendraw={opendraw}
+                    setOpendraw={setOpendraw}
+                  />
+                </IconButton>
+              </Box>
+              <IconButton aria-label="add to shopping cart">
+                <TemporaryDrawer
+                  opendraw={opendraw}
+                  setOpendraw={setOpendraw}
+                />
               </IconButton>
             </ul>
-
           </div>
         </div>
       </nav>

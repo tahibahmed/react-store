@@ -1,17 +1,22 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
+import AlignItemsList from './Alignitems'
 
-export default function TemporaryDrawer({ open, setOpen }) {
+function TemporaryDrawer({ opendraw, setOpendraw ,CardData}) {
+
+  
   return (
-      <React.Fragment>
-        <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-          <Box 
-          role ="presentation">
-            
-            <h1>Hello world</h1>
-          </Box>
-        </Drawer>
-      </React.Fragment>
+    <div>
+    <React.Fragment>
+      <Drawer anchor="right" open={opendraw} onClose={() => setOpendraw(false)}>
+        <Box role="presentation">
+          < AlignItemsList CardData={CardData}/>
+        </Box>
+      </Drawer>
+    </React.Fragment>
+    </div>
   );
 }
+
+export default TemporaryDrawer;

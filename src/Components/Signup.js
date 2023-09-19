@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Button, Form, Input } from 'antd';
-import { Token } from '@mui/icons-material';
-const onFinish = (values) => {
-  if(values) {
-    localStorage.setItem(values, Token.access)
-    console.log('Success:', values);
- }
+
+
+const onFinish = ({values}) => {
+console.log(values )
+    // console.log('Success:', values);
+
 };
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
