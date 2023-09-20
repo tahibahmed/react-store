@@ -4,14 +4,14 @@ import CartContext from './Context/Context';
 import { useEffect, useState } from 'react';
 function App() {
   
-  const [cart ,setcart] = useState(0)
+  const [cart ,setCart] = useState([])
 
 useEffect(()=>{
   const cart = JSON.parse(localStorage.getItem("cart") )|| [];
-  setcart(cart)
+  setCart(cart)
 },[])
   return (
-   <CartContext.Provider value={{cart,setcart}}>
+   <CartContext.Provider value={{cart,setCart}}>
    <Router/> 
    </CartContext.Provider>
   );

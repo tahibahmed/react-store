@@ -1,12 +1,20 @@
 import React from 'react';
 
 import { Button, Checkbox, Form, Input } from 'antd';
-import { Token } from '@mui/icons-material';
+import {signInWithEmailAndPassword, auth } from '../database/Firebase'
+
 const onFinish = (values) => {
-  if(values){
-    localStorage.getItem(Token)
-  }
-  
+  signInWithEmailAndPassword(auth, values.Email, values.password)
+  .then((userCredential) => {
+    
+    const user = userCredential.user;
+   console.log(user)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage)
+  });
   console.log('Success:', values);
 };
 const onFinishFailed = (errorInfo) => {
@@ -25,7 +33,7 @@ const Login = () => {
     wrapperCol={{
       span: 16,
     }}
-    className='one'
+    className='one-log'
     style={{
       width: 600,
 

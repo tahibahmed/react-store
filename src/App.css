@@ -7,6 +7,11 @@
 
   background: linear-gradient(to right, #061700, #52c234);
 }
+.bg-theme {
+  background: #11998e;
+  background: -webkit-linear-gradient(to right, #9dddb5, #96e0da);
+  background: linear-gradient(to right, #a6fac6, #8edfd8);
+}
 
 .h-700 {
   height: 700px;
@@ -27,6 +32,9 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   color: #fff !important;
   font-family: "Roboto", sans-serif;
 }
+.slick-dots {
+  width: 77% !important;
+}
 
 .slick-dots li button:before {
   font-size: 17px !important;
@@ -46,13 +54,27 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
 
 .one {
   border: 1px solid rgb(87, 87, 87);
-  margin-left: 30%;
+  /* margin-left: 30%; */
   margin-top: 10%;
   padding: 30px;
-  width: 500px !important;
+  /* width: 500px !important; */
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 2px 2px 12px;
+}
+.one-log {
+  border: 1px solid rgb(87, 87, 87);
+  margin-left: 30%;
+  margin-top: 10%;
+  padding: 30px;
+  /* width: 500px !important; */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px;
+}
+.btn-checkout {
+  background-color: #0d3003;
+  text-align: center;
 }
 
 .navbar img {
@@ -158,5 +180,40 @@ img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img.mediacardimg.css-1rorj
 }
 .center-border .hello:hover {
   background-color: #0d3003;
-  color: white;
+  color: #fff;
+}
+.del-icons {
+  display: flex;
+  font-size: 40px;
+  color: #ff0000;
+}
+.del-icons:hover {
+  background-color: #ff0000;
+  color: #fff;
+  border-radius: 10px;
+}
+.plus-minus {
+  /* border: 1px solid #0d3003; */
+  margin: 10px;
+}
+.plus-minus:hover {
+  background-color: #0d3003;
+  color: #fff;
+}
+.image-drawer {
+  width: 50px;
+  margin-top: 20px;
+}
+@media (max-width: 992px) {
+  form#basic {
+    width: 90% !important;
+    margin-left: 40px;
+  }
+  .one-log{
+         width: 80%;
+      
+  }
+  .MuiBox-root.css-130f8nx{
+    display: block !important;
+  }
 }

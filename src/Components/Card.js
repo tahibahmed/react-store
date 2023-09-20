@@ -6,27 +6,24 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ReactStars from "react-stars";
-import MuiAlert from '@mui/material/Alert';
+import MuiAlert from "@mui/material/Alert";
 
-import Snackbar from '@mui/material/Snackbar';
+import Snackbar from "@mui/material/Snackbar";
 import CartContext from "../Context/Context";
 const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-  
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function MediaCard({ data, viewDetails }) {
-    
-    const [open , setOpen]=useState(false)
-  const { cart, setcart } = useContext(CartContext);
+  const [open, setOpen] = useState(false);
+  const { cart, setCart } = useContext(CartContext);
   const addtocart = () => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
-
-    cartData.push({...data , qty : 1});
+    cartData.push({ ...data, qty: 1 });
     localStorage.setItem("cart", JSON.stringify(cartData));
 
-    setcart(cart + 1);
-    setOpen(true)
-  
+    setCart(cartData);
+    setOpen(true);
   };
 
   return (
@@ -35,8 +32,17 @@ export default function MediaCard({ data, viewDetails }) {
         <img src={data.image} alt="" />
       </div>
       <CardMedia />
-      <Snackbar open={open} autoHideDuration={2000} anchorOrigin={{ vertical: 'bottom', horizontal: 'right'}} onClose={()=> setOpen(false)}>
-        <Alert onClose={()=> setOpen(false)} severity="success"  sx={{ width: '100%' }}>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        onClose={() => setOpen(false)}
+      >
+        <Alert
+          onClose={() => setOpen(false)}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
           This Product Added In Cart
         </Alert>
       </Snackbar>
@@ -48,7 +54,7 @@ export default function MediaCard({ data, viewDetails }) {
           Price {data.price} $
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {data.description.slice(0, 61)}......
+          {data.description.slice(0, 20)}......
         </Typography>
         <ReactStars
           count={5}

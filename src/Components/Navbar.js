@@ -33,7 +33,7 @@ const Navbar = (props) => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav w-50 ms-5 ">
+            <ul className="navbar-nav w-50 ms-5 mx-4  ">
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/">
                   Home
@@ -50,7 +50,7 @@ const Navbar = (props) => {
                 </NavLink>
               </li>
             </ul>
-            <ul className="navbar-nav ms-auto ">
+            <ul className="navbar-nav w-50 ms-5 mx-4 ">
               <li className="nav-item ">
                 <NavLink className="nav-link" to="/login">
                   Login
@@ -71,21 +71,23 @@ const Navbar = (props) => {
                     <AddShoppingCartIcon onClick={() => setOpendraw(true)} />
                   </Badge>
                   <TemporaryDrawer
-                    CardData={cart}
                     opendraw={opendraw}
                     setOpendraw={setOpendraw}
                   />
                 </IconButton>
-              </Box>
-              <IconButton aria-label="add to shopping cart">
+                <IconButton aria-label="add to shopping cart">
                 <TemporaryDrawer
                   opendraw={opendraw}
                   setOpendraw={setOpendraw}
                 />
               </IconButton>
+              </Box>
+             
             </ul>
           </div>
+        
         </div>
+        
       </nav>
     </div>
   );

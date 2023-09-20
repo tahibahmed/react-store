@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import AlignItemsList from './Alignitems'
 
-function TemporaryDrawer({ opendraw, setOpendraw ,CardData}) {
+
+function TemporaryDrawer({ opendraw, setOpendraw}) {
 
   
   return (
@@ -11,7 +12,7 @@ function TemporaryDrawer({ opendraw, setOpendraw ,CardData}) {
     <React.Fragment>
       <Drawer anchor="right" open={opendraw} onClose={() => setOpendraw(false)}>
         <Box role="presentation">
-          < AlignItemsList CardData={CardData}/>
+          < AlignItemsList />
         </Box>
       </Drawer>
     </React.Fragment>

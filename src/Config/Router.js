@@ -8,6 +8,7 @@ import Navbar from '../Components/Navbar';
 import Login from '../Components/Login';
 import Signup from '../Components/Signup';
 import Products from '../Components/Products';
+import Checkout from '../Components/Checkout';
 
 
 const Router = () => {
@@ -20,6 +21,7 @@ const Router = () => {
       <Route path='/product' element={<Products/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
+      <Route path='/check' element={<Checkout/>}/>
      </Routes>
     </BrowserRouter>
   )

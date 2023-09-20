@@ -1,21 +1,24 @@
 import React from 'react';
-
-import { Button, Form, Input } from 'antd';
-
-
-const onFinish = ({values}) => {
-console.log(values )
-    // console.log('Success:', values);
-
-};
+import {createUserWithEmailAndPassword, auth } from '../database/Firebase'
+import { Button, Checkbox, Form, Input } from 'antd';
+const onFinish = (values) => {
+  createUserWithEmailAndPassword(auth, values.Email, values.password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log(user)
+   
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage)
+    // ..
+  });
+}
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
-const Signup = () => {
-
-
-  return (
-
+const Signup = () => (
   <Form
     name="basic"
     labelCol={{
@@ -24,10 +27,8 @@ const Signup = () => {
     wrapperCol={{
       span: 16,
     }}
-    className='one'
     style={{
-      width: 600,
-
+      maxWidth: 600,
     }}
     initialValues={{
       remember: true,
@@ -35,15 +36,15 @@ const Signup = () => {
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
-   
+    className='one-log'
   >
     <Form.Item
-      label="UserName"
-      name="UserName"
+      label="Username"
+      name="username"
       rules={[
         {
           required: true,
-          message: 'Please input your Username!',
+          message: 'Please input your username!',
         },
       ]}
     >
@@ -52,19 +53,16 @@ const Signup = () => {
     <Form.Item
       label="Email"
       name="Email"
-      
       rules={[
         {
           required: true,
           message: 'Please input your Email!',
-          
         },
-        
-      ]
-    }
+      ]}
     >
-      <Input  />
+      <Input />
     </Form.Item>
+
 
     <Form.Item
       label="Password"
@@ -87,7 +85,7 @@ const Signup = () => {
         span: 16,
       }}
     >
-
+      <Checkbox>Remember me</Checkbox>
     </Form.Item>
 
     <Form.Item
@@ -96,10 +94,10 @@ const Signup = () => {
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit" >
-        Create Account
+      <Button type="primary" htmlType="submit">
+        Submit
       </Button>
     </Form.Item>
-  </Form>)
-};
+  </Form>
+);
 export default Signup;
