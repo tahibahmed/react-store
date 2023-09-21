@@ -3,11 +3,13 @@ import { NavLink } from "react-router-dom";
 import "../App.css";
 import lgooo from "../assets/lgoo .png";
 import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import TemporaryDrawer from "./Drawer";
 import Badge from "@mui/material/Badge";
 import { Box } from "@mui/material";
 import CartContext from "../Context/Context";
+import { auth, signOut } from "../database/Firebase";
 
 const Navbar = (props) => {
   const [opendraw, setOpendraw] = useState(false);
@@ -76,18 +78,23 @@ const Navbar = (props) => {
                   />
                 </IconButton>
                 <IconButton aria-label="add to shopping cart">
-                <TemporaryDrawer
-                  opendraw={opendraw}
-                  setOpendraw={setOpendraw}
-                />
-              </IconButton>
+                  <TemporaryDrawer
+                    opendraw={opendraw}
+                    setOpendraw={setOpendraw}
+                  />
+                </IconButton>
               </Box>
-             
+              <Button
+                className="btn-log"
+                onClick={() => signOut(auth)}
+                type="primary"
+                htmlType="submit"
+              >
+                Logout
+              </Button>
             </ul>
           </div>
-        
         </div>
-        
       </nav>
     </div>
   );

@@ -1,22 +1,73 @@
-import React from 'react';
-import {createUserWithEmailAndPassword, auth } from '../database/Firebase'
-import { Button, Checkbox, Form, Input } from 'antd';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import Swal from 'sweetalert2'
+import {
+  createUserWithEmailAndPassword,
+  auth,
+  collection,
+  addDoc,
+  db,
+  onAuthStateChanged,
+} from "../database/Firebase";
+import { Button, Checkbox, Form, Input } from "antd";
+
+const AuthContext = createContext();
+
+export const Auth = () => {
+  return useContext(AuthContext);
+};
+const UserAuthContext = () => {
+  const [currentuser, setcurrentuser] = useState(null);
+  const [error, seterror] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setcurrentuser(user);
+        const uid = user.uid;
+        console.log(uid);
+        // ...
+      } else {
+        setcurrentuser(null);
+      }
+    });
+  }, []);
+};
+
 const onFinish = (values) => {
   createUserWithEmailAndPassword(auth, values.Email, values.password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    console.log(user)
-   
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    // ..
-  });
-}
+    .then(async (UserCredential) => {
+      localStorage.setItem("uid", UserCredential.user.uid);
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          name: values.username,
+          email: values.Email,
+        });
+
+        Swal.fire({
+          icon: 'Success',
+          text: 'You are registerd',
+        })
+        console.log("Document written with ID: ", docRef.id);
+        UserAuthContext()
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
+      console.log(errorMessage);
+      // ..
+    });
+};
+
 const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
+  console.log("Failed:", errorInfo);
 };
 const Signup = () => (
   <Form
@@ -36,7 +87,7 @@ const Signup = () => (
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
-    className='one-log'
+    className="one-log"
   >
     <Form.Item
       label="Username"
@@ -44,7 +95,7 @@ const Signup = () => (
       rules={[
         {
           required: true,
-          message: 'Please input your username!',
+          message: "Please input your username!",
         },
       ]}
     >
@@ -56,13 +107,12 @@ const Signup = () => (
       rules={[
         {
           required: true,
-          message: 'Please input your Email!',
+          message: "Please input your Email!",
         },
       ]}
     >
       <Input />
     </Form.Item>
-
 
     <Form.Item
       label="Password"
@@ -70,7 +120,7 @@ const Signup = () => (
       rules={[
         {
           required: true,
-          message: 'Please input your password!',
+          message: "Please input your password!",
         },
       ]}
     >
@@ -95,7 +145,7 @@ const Signup = () => (
       }}
     >
       <Button type="primary" htmlType="submit">
-        Submit
+       Signup Here
       </Button>
     </Form.Item>
   </Form>

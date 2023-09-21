@@ -209,11 +209,17 @@ img.MuiCardMedia-root.MuiCardMedia-media.MuiCardMedia-img.mediacardimg.css-1rorj
     width: 90% !important;
     margin-left: 40px;
   }
-  .one-log{
-         width: 80%;
-      
+  .one-log {
+    width: 80%;
   }
-  .MuiBox-root.css-130f8nx{
+  .MuiBox-root.css-130f8nx {
     display: block !important;
   }
+}
+.btn-log {
+  background: #11998e;
+  background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
+  background: linear-gradient(to right, #38ef7d, #11998e);
+
+  color: #fff !important;
 }
