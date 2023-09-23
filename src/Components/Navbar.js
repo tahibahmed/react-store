@@ -10,12 +10,21 @@ import Badge from "@mui/material/Badge";
 import { Box } from "@mui/material";
 import CartContext from "../Context/Context";
 import { auth, signOut } from "../database/Firebase";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
   const [opendraw, setOpendraw] = useState(false);
-
+  const navigate =  useNavigate()
   const { cart, setcart } = useContext(CartContext);
-
+const signoutt =()=>{
+  signOut(auth).then(() => {
+    navigate('/login')
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+ 
+}
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -86,7 +95,7 @@ const Navbar = (props) => {
               </Box>
               <Button
                 className="btn-log"
-                onClick={() => signOut(auth)}
+                onClick={() =>signoutt()}
                 type="primary"
                 htmlType="submit"
               >

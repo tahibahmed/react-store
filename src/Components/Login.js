@@ -1,20 +1,25 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { Button, Form, Input } from "antd";
-
+import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   auth,
   signOut,
 } from "../database/Firebase";
-
+const Login = () => {
+  const navigate =  useNavigate()
 const onFinish = (values) => {
+ 
   signInWithEmailAndPassword(auth, values.Email, values.password)
     .then((userCredential) => {
       const user = userCredential.user;
-
+      navigate('/product')
+  
       localStorage.getItem("uid", user.uid);
       Swal.fire("Good job!", "You are Login  !");
+    
+
       console.log(user);
     })
     .catch((error) => {
@@ -33,7 +38,8 @@ const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 
-const Login = () => {
+
+  
   return (
     <Form
       name="basic"
